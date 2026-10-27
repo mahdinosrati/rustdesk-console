@@ -16,6 +16,8 @@
 
 [Discord](https://discord.gg/vrQSJfqpwD) · [Frontend Project](https://github.com/databk/rustdesk-console-web)
 
+[فارسی: راهنمای راه‌اندازی و نصب با یک دستور](docs/README-FA.md)
+
 </div>
 
 ---
