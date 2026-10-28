@@ -4,19 +4,21 @@
 
 **[آموزش قدم‌به‌قدم نصب با Docker Compose](docker-FA.md)** — از نصب Docker تا تنظیم سرور و اتصال اولین کلاینت.
 
+**[HTTPS خودکار، پیش‌بررسی، بکاپ و رابط فارسی](enhancements-FA.md)** · **[راهنمای تصویری](visual-FA.md)**
+
 RustDesk Console پنل وب مدیریت کاربران، دستگاه‌ها، دفترچهٔ آدرس، سیاست‌های دسترسی و گزارش‌های RustDesk است. برای اتصال دسکتاپ از راه دور به دو سرویس `hbbs` (شناسه و هماهنگی اتصال) و `hbbr` (رله) نیز نیاز دارید. نصب کامل زیر هر دو را در کنار پنل راه‌اندازی می‌کند.
 
-این راهنما مستندات را فارسی می‌کند؛ زبان رابط وب را تغییر نمی‌دهد. نصب Docker از ایمیج‌های منتشرشدهٔ پروژهٔ اصلی `databk` استفاده می‌کند و کد این فورک را نمی‌سازد.
+نصب عادی Docker از ایمیج‌های منتشرشدهٔ پروژهٔ اصلی `databk` استفاده می‌کند. برای رابط فارسی گزینهٔ `--persian-web` را طبق راهنمای امکانات بالا فعال کنید؛ این گزینه رابط را از فورک فارسی می‌سازد و به‌روزرسانی آن دستی است.
 
 ## پیش‌نیازها
 
 - سرور لینوکسی با دسترسی `root` یا `sudo`؛ برای نصب خودکار Docker از Debian یا Ubuntu استفاده کنید.
 - معماری `amd64` یا `arm64`، اینترنت و دسترسی به GitHub، مخازن Docker و Docker Hub.
 - یک IP قابل‌دسترسی یا دامنه مانند `rd.example.com` که به سرور اشاره کند. در صورت استفاده از Cloudflare، رکورد مربوط به پروتکل RustDesk باید DNS only باشد.
-- بسته‌های `curl`، `ca-certificates` و `openssl`. در Debian/Ubuntu، اگر موجود نیستند:
+- بسته‌های `curl`، `ca-certificates`، `openssl` و Python 3.10 یا جدیدتر. در Debian/Ubuntu، اگر موجود نیستند:
 
 ```sh
-sudo apt-get update && sudo apt-get install -y curl ca-certificates openssl
+sudo apt-get update && sudo apt-get install -y curl ca-certificates openssl python3
 ```
 
 نصاب برای نصب تازه است. مسیر ثابت آن `/opt/rustdesk-console-compose` است و اگر این مسیر از قبل وجود داشته باشد، بدون بازنویسی خارج می‌شود. Docker موجود را ارتقا نمی‌دهد؛ اگر Docker نصب نباشد، اسکریپت رسمی `get.docker.com` را اجرا می‌کند. روی سایر توزیع‌ها ابتدا Docker Engine و افزونهٔ Compose v2 را نصب کنید. Docker باید محلی، فعال و بدون حالت rootless باشد؛ Docker Desktop ویندوز هدف این نصاب نیست.

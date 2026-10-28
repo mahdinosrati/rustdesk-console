@@ -1,0 +1,17 @@
+name: Compose installation tools
+on:
+  push:
+    paths: ['deployment/console-*.py', 'deployment/install-compose.sh', 'deployment/test_console_tools.py', '.github/workflows/compose-tools.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-22.04, ubuntu-24.04]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: sh -n deployment/install-compose.sh
+      - run: python3 -m unittest discover -s deployment -p test_console_tools.py -v
